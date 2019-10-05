@@ -1,6 +1,9 @@
-# Support UE Framework
-Cette branche skeleton est juste le point de départ pour les TDs. Elle contient tous les fichiers et répertoire 
-correspondant à l'instalation via
+## Support UE Framework
+La code cette branche accompagne le cours sur HttpKernel, l'inversion de contrôle etc.
+Les sources se trouve dans ```public/src``` vous pouvez l'executer via votre navigateur en 
+lançant le serveur de symfony
 
-    $ composer create-project symfony/skeleton <path_project>
-    $ composer require symfony/web-server-bundle --dev
+    $ bin/console server:start 0.0.0.0:8000
+ou en lançant les scripts php directement avec l'interpréteur ou encore en utilisant 
+
+    $ php -S 0.0.0.0:8000 -t public/src

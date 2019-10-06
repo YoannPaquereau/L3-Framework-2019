@@ -3,19 +3,19 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 
-class LivreController
+class LivreController extends AbstractController
 {
     /**
      * @Route( "/livre/numero/{ref}")
      */
     public function numero( $ref )
     {
-        return new Response(
-            '<html><body>Lucky number: '.$ref.'</body></html>'
-        );
+        return $this->render('livre/numero.html.twig', [
+            'number' => $ref,
+        ]);
     }
 
 }

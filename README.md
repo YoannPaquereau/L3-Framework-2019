@@ -16,9 +16,27 @@ de créer un projet et ses dépendances. On choisira par exemple un squelette mi
     
 #### Création du projet en Symfony 5
 Symfony 5 est livré avec un utilitaire vous facilitant de nombreuses opérations de bases, comme par exemple la 
-création du squelette d'une application symfony (remplacer my_project_name par le nom de votre projet)
+création du squelette d'une application symfony. La procédure de création d'un nouveau projet n'est pas unique, 
+je vous propose la suivante, créez d'abord un répertoire qui contiendra votre projet et le fichier .symfony
 
-    $ symfony new my_project_name --full 
+    $ mkdir /path/un_repertoire
+    
+Ensuite démarer un container comme suit ( le paramètre -u 1000:1000 n'est utile que sous linux )
+
+    $  docker run -ti --rm --name tp -v /path/un_repertoire:/opt/project/ -u 1000:1000 -p 8000:8000 -e HOME=/opt/project/ symfony5 /bin/bash
+
+Dans votre container maintenant, fixer quelque info pour git et créer votre projet
+
+    [dans-container]$ git config --global user.email "you@example.com"
+    [dans-container]$ git config --global user.name "Your Name"
+    [dans-container]$ symfony new my_project_name --full
+    
+Il ne vous reste plus qu'a démarrer votre serveur
+
+    [dans-container]$ symfony serve --no-tls --dir=my_project_name
+
+Pour visualiser ouvrez dans un navigateur l'url http://127.0.0.1:8000 et pour éditer votre projet ouvrez dans 
+votre ide le répertoire my_project_name
 
 #### Création du projet en Symfony 4
 De cette image vous lancerez la création d'un projet en utilisant un script de composer officiel. En partant d'un projet
